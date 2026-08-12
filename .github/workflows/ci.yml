@@ -32,8 +32,7 @@ jobs:
           python -m pytest -q
 
       - name: Build Docker image
-        run: |
-          docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
+        run: docker build -t ghcr.io/patdahl22/jensenstore-api:${{ github.sha }} .
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -43,4 +42,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
+        run: docker push ghcr.io/patdahl22/jensenstore-api:${{ github.sha }}
